@@ -16,7 +16,7 @@ that day.
 Proudly self hosting this blog. No Google analytics & third party systems.
 Plain static site.
 
-Comments can be fired at mulander-at-tintagel-dot-pl. You can use 4096R/[092BB571](http://pgp.mit.edu/pks/lookup?op=get&search=0xF4F777B8092BB571) to encrypt the message. I also frequent [HN](news.ycombinator.com), [reddit](reddit.com) & [lobsters](lobste.rs) so you can leave comments there :)
+Comments can be fired at mulander-at-tintagel-dot-pl. You can use 4096R/[092BB571](http://pgp.mit.edu/pks/lookup?op=get&search=0xF4F777B8092BB571) to encrypt the message. I also frequent [HN](https://news.ycombinator.com), [reddit](https://reddit.com) & [lobsters](https://lobste.rs) so you can leave comments there :)
 
 You are free to use the [HTTP version](http://blog.tintagel.pl) or opt in to the [TLS encrypted one](https://blog.tintagel.pl) but you will have to self
 verify that my self signed certificate is ok ;)
