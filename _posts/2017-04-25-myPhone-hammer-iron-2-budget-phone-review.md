@@ -1,7 +1,7 @@
 ---
 layout: post
 title: myPhone Hammer Iron 2 - budget phone review
-date: '2016-07-25T00:00:00.000-02:00'
+date: '2017-04-25T00:00:00.000-02:00'
 author: Adam Wołk
 image: /images/old-phone.jpg
 tags:
