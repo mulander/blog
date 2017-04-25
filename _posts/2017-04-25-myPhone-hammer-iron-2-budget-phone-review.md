@@ -87,7 +87,7 @@ to buy two phones, out of which one was necessary only because the battery was n
 The lack of LTE is actually not a problem for me. The most network usage I have on my phone is at home with WiFi and during
 outside events like running/dog trekking I don't need LTE, 3G is enough and adds to longer battery life.
 
-Audio is another thing though. Everything the reviewes said on it is spot on. Crackling, glitches, phone going low volume
+Audio is another thing though. Everything the reviewers said on it is spot on. Crackling, glitches, phone going low volume
 and completely mute on occassions. Happened mostly on the built in speaker phone when it was not on. I am [still not sure](https://mastodon.social/@mulander/3804924) what and if I will do anything with it. It doens't happen always and I don't
 spend much time talking - could use a regular or bluetooth headset to workarond it. Not really keen to send it for repair and
 wait 2-3 weeks without a phone - especially since a lot of online reviewers reported that phones after repairs still had the same issue
