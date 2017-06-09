@@ -8,7 +8,7 @@ tags:
 - openbsd
 ---
 
-I made a new years resolution to read at least one C source file from OpenBSD.
+I made a new years resolution to read at least one C source file from OpenBSD daily.
 The goal was to both get better at C and to contribute more to the base system and userland
 developmnet. I have to admit that initially I wasn't consistent with it at all. In the first quarter
 of the year I read the code of a few small base utilities and nothing else. Still, every bit counts and it's
