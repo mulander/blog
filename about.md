@@ -3,12 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-Co-Founder of [koparo.com](https://koparo.com)
-
-
-Design and active development of the Koparo core services, databases & infrastructure.
-Additionally responsible for release engineering, code quality improvements, orchestration
-of Koparo services and service reliability.
+Software Developer @ [Fudo Security](https://fudosecurity.com)
 
 Writing about OpenBSD, programming and anything else that grinds my gears
 that day.
