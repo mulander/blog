@@ -1,0 +1,232 @@
+--- t2.out.go	2011-03-21 21:29:01 +0000
++++ t3.go	2011-03-21 23:07:54 +0000
+@@ -53,8 +53,7 @@
+ var Globals GlobalsStr
+ 
+ 
+-func main()
+-{
++func main() {
+   fmt.Printf("Simple RT by gynvael.coldwind//vx (http://gynvael.coldwind.pl)\n");
+ 
+   fmt.Printf("Creating scene...\n");
+@@ -92,10 +91,8 @@
+ 
+ 
+   var SpherePos Vector3D;
+-  for j := 0; j < 6; j++
+-  {
+-    for i := 0; i < 9; i++
+-    {
++  for j := 0; j < 6; j++ {
++    for i := 0; i < 9; i++ {
+       m := &Mirror;
+ 
+       z := float64(2.0);
+@@ -122,15 +119,13 @@
+ 
+ 
+   c := make(chan int);
+-  for i := 0; i < MaxThreads; i++
+-  {
++  for i := 0; i < MaxThreads; i++ {
+     fmt.Printf("[%d] Thread start\n", i);
+     go Render(Globals.img, MaxThreads, i, c);
+   }
+ 
+ 
+-  for i := 0; i < MaxThreads; i++
+-  {
++  for i := 0; i < MaxThreads; i++ {
+     fmt.Printf("[%d] Thread finished\n", <-c);
+   }
+ 
+@@ -138,8 +133,7 @@
+   fmt.Printf("Writing test.png image...\n");
+   fd, err:= os.Open("test.png", os.O_WRONLY | os.O_CREATE, 0666);
+ 
+-  if(err != nil)
+-  {
++  if(err != nil) {
+     fmt.Printf("error: %s\n", err.String());
+     return
+   }
+@@ -149,10 +143,8 @@
+   fmt.Printf("Done.\n");
+ }
+ 
+-func AddLight(Pos, Color *Vector3D)
+-{
+-  if Globals.LightCount < MaxLightCount
+-  {
++func AddLight(Pos, Color *Vector3D) {
++  if Globals.LightCount < MaxLightCount {
+     l := new(Light);
+     { l.Position.x = Pos.x; l.Position.y = Pos.y; l.Position.z = Pos.z; };
+     { l.Color.x = Color.x; l.Color.y = Color.y; l.Color.z = Color.z; };
+@@ -162,10 +154,8 @@
+ }
+ 
+ 
+-func AddSphere(Pos *Vector3D, Rad float64, m *Material)
+-{
+-  if Globals.PrimitiveCount < MaxPrimCount
+-  {
++func AddSphere(Pos *Vector3D, Rad float64, m *Material) {
++  if Globals.PrimitiveCount < MaxPrimCount {
+     p := new(PrimSphere);
+     { p.Position.x = Pos.x; p.Position.y = Pos.y; p.Position.z = Pos.z; };
+     p.Radius = Rad;
+@@ -175,8 +165,7 @@
+   }
+ }
+ 
+-func (this *PrimSphere) Intersect(ray *Ray, dist *float64) int
+-{
++func (this *PrimSphere) Intersect(ray *Ray, dist *float64) int {
+   var v_precalc Vector3D;
+   var det_precalc, b, det, i1, i2 float64;
+ 
+@@ -190,8 +179,7 @@
+ 
+   retval := int(0);
+ 
+-  if(det > 0)
+-  {
++  if(det > 0) {
+     det = math.Sqrt(det);
+     i1 = b - det;
+     i2 = b + det;
+@@ -208,8 +196,7 @@
+   return retval;
+ }
+ 
+-func (this *PrimSphere) Normal(Ret, pos *Vector3D)
+-{
++func (this *PrimSphere) Normal(Ret, pos *Vector3D) {
+   { Ret.x = pos.x; Ret.y = pos.y; Ret.z = pos.z; };
+   { Ret.x -= this.Position.x; Ret.y -= this.Position.y; Ret.z -= this.Position.z; };
+   f := float64(1.0 / this.Radius);
+@@ -218,29 +205,25 @@
+ }
+ 
+ 
+-func Trace(RetVector *Vector3D, ray *Ray, refl_depth int)
+-{
++func Trace(RetVector *Vector3D, ray *Ray, refl_depth int) {
+   var color Vector3D; color.x = 0.02; color.y = 0.1; color.z = 0.17;;
+ 
+ 
+   dist := float64(1000000000.0);
+   var prim *PrimSphere = nil;
+ 
+-  for i := int(0); i < Globals.PrimitiveCount; i++
+-  {
++  for i := int(0); i < Globals.PrimitiveCount; i++ {
+     var temp_dist float64;
+ 
+     p := Globals.PrimitiveList[i];
+ 
+     res := p.Intersect(ray, &temp_dist);
+ 
+-    if res == 0
+-    {
++    if res == 0 {
+       continue;
+     }
+ 
+-    if temp_dist < dist
+-    {
++    if temp_dist < dist {
+       prim = p;
+       dist = temp_dist;
+ 
+@@ -250,8 +233,7 @@
+   dist = dist;
+   prim = prim;
+ 
+-  if prim == nil
+-  {
++  if prim == nil {
+     { RetVector.x = color.x; RetVector.y = color.y; RetVector.z = color.z; };
+     return;
+   }
+@@ -266,8 +248,7 @@
+   { prim_color.x = prim.m.Color.x; prim_color.y = prim.m.Color.y; prim_color.z = prim.m.Color.z; };
+ 
+ 
+-  for i := 0; i < Globals.LightCount; i++
+-  {
++  for i := 0; i < Globals.LightCount; i++ {
+     lightiter := Globals.LightList[i];
+ 
+     var L, N Vector3D;
+@@ -278,11 +259,9 @@
+ 
+     prim.Normal(&N, &pi);
+ 
+-    if prim.m.Diffusive > 0.0
+-    {
++    if prim.m.Diffusive > 0.0 {
+       dot := (L.x*N.x + L.y*N.y + L.z*N.z);
+-      if dot > 0.0
+-      {
++      if dot > 0.0 {
+         diff := dot * prim.m.Diffusive;
+ 
+         var color_add Vector3D;
+@@ -295,8 +274,7 @@
+       }
+     }
+ 
+-    if prim.m.Specular > 0.0
+-    {
++    if prim.m.Specular > 0.0 {
+ 
+ 
+ 
+@@ -309,8 +287,7 @@
+       { R.x -= R1.x; R.y -= R1.y; R.z -= R1.z; };
+ 
+       dot := (ray.Direction.x*R.x + ray.Direction.y*R.y + ray.Direction.z*R.z);
+-      if dot > 0
+-      {
++      if dot > 0 {
+ 
+         dot *= dot; dot *= dot; dot *= dot;
+         spec := dot * prim.m.Specular;
+@@ -323,8 +300,7 @@
+     }
+ 
+   refl := prim.m.Reflective;
+-  if refl > 0.0 && refl_depth < 4
+-  {
++  if refl > 0.0 && refl_depth < 4 {
+ 
+     var N, R, R1, newPi Vector3D;
+     prim.Normal(&N, &pi);
+@@ -365,8 +341,7 @@
+   { RetVector.x = color.x; RetVector.y = color.y; RetVector.z = color.z; };
+ }
+ 
+-func Render(img *image.RGBA, ThreadCount, ThreadId int, c chan int)
+-{
++func Render(img *image.RGBA, ThreadCount, ThreadId int, c chan int) {
+   var CameraPos Vector3D; CameraPos.x = 0.0; CameraPos.y = 0.0; CameraPos.z = -5.0;;
+   var WX1, WX2, WY1, WY2 float64 = -2.0, 2.0, 1.5, -1.5;
+ 
+@@ -379,12 +354,10 @@
+ 
+ 
+ 
+-  for y = ThreadId; y < img.Height(); y += ThreadCount
+-  {
++  for y = ThreadId; y < img.Height(); y += ThreadCount {
+     SX = WX1;
+ 
+-    for x = 0; x < img.Width(); x++
+-    {
++    for x = 0; x < img.Width(); x++ {
+       var CameraTarget Vector3D; CameraTarget.x = SX; CameraTarget.y = SY; CameraTarget.z = 0.0;;
+ 
+       var ray Ray;
